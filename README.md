@@ -36,3 +36,14 @@ Do not upload mod binaries or private server/world files to this public reposito
 3. Check how block entities are reconstructed during disassembly.
 4. Add a minimal, regression-tested change only after finding the loss point.
 5. Preserve train relocation behavior and test both client/server before release.
+
+## Patch verification (required)
+
+The experimental patcher must be run against the **known-working relocation JAR**, not against a diagnostics JAR:
+
+```sh
+gradle patchFramedCamo --args='/path/to/working-relocation.jar /path/to/output.jar'
+gradle verifyFramedCamo --args='/path/to/output.jar'
+```
+
+**Warning:** A previously distributed experimental file named `create-adapted-6.0.10-RELOCATE-FRAMEDCAMO-EXPERIMENTAL.jar` was inspected and found to **lack** the `framedCamoRestore` method. Do not treat it as patched. A green diagnostics build does not prove that a Create JAR has been patched or works in-game.
