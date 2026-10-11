@@ -11,3 +11,10 @@ dependencies {
 }
 java { toolchain { languageVersion = JavaLanguageVersion.of(25) } }
 application { mainClass = 'dev.compat.diagnostics.InspectCreate' }
+
+tasks.register('runNbtTrace', JavaExec) {
+    group = 'verification'
+    description = 'Trace Create contraption NBT handling without modifying the JAR'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'dev.compat.diagnostics.TraceNbtFlow'
+}
