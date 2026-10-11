@@ -25,7 +25,7 @@ public final class PatchFramedCamo {
     public static void main(String[] args) throws Exception {
         if (args.length != 2) throw new IllegalArgumentException("Usage: PatchFramedCamo <working-relocation-create.jar> <output.jar>");
         Path input = Path.of(args[0]), output = Path.of(args[1]);
-        if (Files.isSameFile(input, output)) throw new IllegalArgumentException("Input and output must differ");
+        if (Files.exists(output) && Files.isSameFile(input, output)) throw new IllegalArgumentException("Input and output must differ");
         boolean[] patched = {false};
         try (JarFile jar = new JarFile(input.toFile());
              JarOutputStream out = new JarOutputStream(Files.newOutputStream(output))) {
