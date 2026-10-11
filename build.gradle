@@ -25,3 +25,10 @@ tasks.register('patchFramedCamo', JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'dev.compat.diagnostics.PatchFramedCamo'
 }
+
+tasks.register('verifyFramedCamo', JavaExec) {
+    group = 'verification'
+    description = 'Fail if the output Create JAR lacks the FramedBlocks restoration hook'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'dev.compat.diagnostics.VerifyFramedCamo'
+}
