@@ -18,3 +18,10 @@ tasks.register('runNbtTrace', JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'dev.compat.diagnostics.TraceNbtFlow'
 }
+
+tasks.register('patchFramedCamo', JavaExec) {
+    group = 'verification'
+    description = 'Create an EXPERIMENTAL patched JAR from a local, already-working Create JAR'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'dev.compat.diagnostics.PatchFramedCamo'
+}
